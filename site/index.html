@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="css.css">
+    <script src="./script.js"></script>
+</head>
+<body>
+
+    <h1>Тест на добавление вопросов</h1>
+
+    <div class="block">
+        <div class="wrapper">
+            <h2>Добавить вопрос</h2>
+            <form action="http://localhost:8080/api/question" method="get" class="addQuestion" enctype="text/plain">
+                <input required class="quest" type="text" name="title" placeholder="Вопрос">
+                <p class="options__title">
+                    Варианты ответа
+                </p>
+                <ul id="options" class="options">
+                    <input required class="option" type="text" name="options[]">
+                    <input required class="option" type="text" name="options[]">
+                </ul>
+                <button type="button" class="btn" id="adder">Добавить вариант</button>
+                <button type="submit" class="btn-s">Добавить вопрос</button>
+            </form>
+        </div>
+    </div>
+    <h2>Список вопросов для данного робота</h2>
+
+
+    <ul class="robots" id="robots">
+        <li class="robot">
+            <div class="name">
+                <strong>Вопрос</strong>
+            </div>
+            <div class="answer">
+              <strong>Варианты ответа</strong>
+            </div>
+            <ul>
+
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

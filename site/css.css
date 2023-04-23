@@ -1,0 +1,65 @@
+h1{
+    text-align: center;
+    margin-bottom: 64px;
+}
+h2{
+    text-align: center;
+}
+.wrapper{
+    margin: 0 auto;
+    max-width: 620px;
+}
+form {
+    border-radius: 12px;
+    border: 1px solid black;
+    padding: 20px;
+}
+.quest {
+    font-size: 18px;
+    padding: 4px;
+    width: 100%;
+}
+.options__title{
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.option{
+    font-size: 16px;
+    padding: 4px;
+}
+.btn {
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 24px;
+    background-color: deepskyblue;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+button{
+    padding: 12px;
+    font-size: 18px;
+    margin-left: auto;
+    display: block;
+    background-color: #02bb02;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.robots{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.robot{
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px black solid;
+}
