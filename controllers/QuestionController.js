@@ -1,27 +1,30 @@
 import {Question} from "../models/model.js";
-import fs from 'fs';
-
-// ./data/questions.txt
-// console.log(fileContent); // содержимое файла
 
 export class QuestionController {
     async create(req, res) {
-        const {title} = req.query
-        const {options} = req.query
-        fs.readFile('./data/questions.txt', 'utf8', function(error, fileContent){
-            if(error) throw error; // ошибка чтения файла, если есть
-            let toWrite = fileContent + `${title}; ${options} \n `;
-            fs.writeFile('./data/questions.txt', toWrite, function(error){
-                if(error) throw error; // ошибка чтения файла, если есть
-                console.log('Данные успешно записаны записать файл');
-            });
-        });
-        return res.json(req.query)
+        const {text} = req.body
+        const type = await Question.create({text})
+        return res.json('succesfully')
     }
     async getAll(req, res) {
-        let fileContent = fs.readFileSync('./data/questions.txt', 'utf8');
-        return res.json(fileContent)
+        const types = await Question.findAndCountAll()
+        return res.json(types)
+    }
+    async getOnes(req, res) {
+        const {id} = req.params
+        const type = await Question.findAll({
+            where: {id}
+        }) 
+        return res.json(type)
+    }
+    async getOne(req, res) {
+        const {id} = req.params
+        const type = await Question.findOne({
+            where: {id}
+        })
+        return res.json(type)
     }
 }
 
 
+ 

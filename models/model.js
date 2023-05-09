@@ -1,16 +1,17 @@
 import {db} from "../db.js";
 import {DataTypes} from "sequelize";
-
+export const test = 'test'
 export const User = db.define('user', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    number: {type: DataTypes.INTEGER, unique: true},
+    number: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: "USER"}
-})
+}) 
 export const Robot = db.define('robot', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING},
-    desc: {type: DataTypes.STRING}
+    desc: {type: DataTypes.STRING},
+    img: {type: DataTypes.STRING}
 
 })
 export const Review = db.define('review', {

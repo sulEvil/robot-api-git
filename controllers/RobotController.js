@@ -5,19 +5,19 @@ export class RobotController {
         const {name} = req.body
         const {desc} = req.body
         const type = await Robot.create({name, desc})
-        return res.json(type)
+        return res.json('succesfully')
 
     }
     async getAll(req, res) {
-        const {id} = req.query
-        if(id){
-            res.json(id)
-
-        } else {
-            res.json({id: '1', name: 'pudu robot', desc: 'Робот из софт-сервиса'})
-        }
-
+        const types = await Robot.findAll()
+        res.json(types)
     }
-
+    async getOnes(req, res) {
+        const {id} = req.params
+        const type = await Robot.findAll({
+            where: {id}
+        }) 
+        return res.json(type)
+    }
 }
 
