@@ -1,6 +1,5 @@
 import {Sequelize} from "sequelize";
 import dotenv from 'dotenv';
-import { Pool } from "pg";
 dotenv.config()
 
 export const db = new Sequelize(
