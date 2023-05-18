@@ -1,5 +1,6 @@
 import {Sequelize} from "sequelize";
 import dotenv from 'dotenv';
+import { Pool } from "pg";
 dotenv.config()
 
 export const db = new Sequelize(
@@ -9,6 +10,12 @@ export const db = new Sequelize(
     {
         dialect: 'postgres',
         host: process.env.DB_HOST,
-        port: process.env.DB_PORT
+        port: process.env.DB_PORT,
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 300000,
+            acquire: 300000
+        }
     }
 )
