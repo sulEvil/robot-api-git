@@ -14,17 +14,18 @@ const generateJwt = (id, number, role) => {
 export class UserController {
     async registration(req, res, next) {
         const {number, password, role} = req.body 
-        if(!number || !password){
-            return res.json('Error in registration, number or password')
-        }
-        const candidate = await User.findOne({where: {number}})
-        if(candidate){
-            return res.json('Error, have been registered')
-        }
-        const hashPassword = await bcrypt.hash(password, 3)
-        const user = await User.create({number, role, password: hashPassword})
-        const token = generateJwt(user.id, user.number, user.role)
-        return res.json(token)
+        return res.json(number, password, role)
+        // if(!number || !password){
+        //     return res.json('Error in registration, number or password')
+        // }
+        // const candidate = await User.findOne({where: {number}})
+        // if(candidate){
+        //     return res.json('Error, have been registered')
+        // }
+        // const hashPassword = await bcrypt.hash(password, 3)
+        // const user = await User.create({number, role, password: hashPassword})
+        // const token = generateJwt(user.id, user.number, user.role)
+        // return res.json(token)
     }
     async login(req, res) {
         const {number, password} = req.body
