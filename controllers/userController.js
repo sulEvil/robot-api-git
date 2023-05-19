@@ -15,7 +15,7 @@ export class UserController {
     async registration(req, res, next) {
         const {number, password, role} = req.body 
         if(!number || !password){
-            return res.json('Error in registration')
+            return res.json('Error in registration, number or password')
         }
         const candidate = await User.findOne({where: {number}})
         if(candidate){
