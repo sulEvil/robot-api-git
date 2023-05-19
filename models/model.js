@@ -5,14 +5,17 @@ export const User = db.define('user', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     number: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
-    role: {type: DataTypes.STRING, defaultValue: "USER"}
+    role: {type: DataTypes.STRING, defaultValue: "USER"},
+    name: {type: DataTypes.STRING},
+
 }) 
 export const Robot = db.define('robot', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING},
     desc: {type: DataTypes.STRING},
-    img: {type: DataTypes.STRING}
-
+    deviceId: {type: DataTypes.STRING},
+    logo: {type: DataTypes.STRING},
+    color: {type: DataTypes.STRING}
 })
 export const Review = db.define('review', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
