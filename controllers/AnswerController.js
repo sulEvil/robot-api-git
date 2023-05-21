@@ -22,9 +22,9 @@ export class AnswerController {
     }
     async getOnes(req, res) {
         let limit = 4
-        const {id} = req.params
+        const {questionId} = req.params
          const type = await Answer.findAll({
-             where: {id}
+             where: {questionId}
          , limit}) 
          return res.json(type)
     }

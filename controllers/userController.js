@@ -43,5 +43,5 @@ export class UserController {
         const token = generateJwt(req.user.id, req.user.number, req.user.role)
         return res.json({token})
     }
-}
+} 
 
