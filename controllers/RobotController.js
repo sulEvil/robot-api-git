@@ -3,15 +3,14 @@ import {Robot} from "../models/model.js";
 export class RobotController {
     async create(req, res) {
         const {name, desc, deviceId, userId} = req.body
-
-        if(!name || !desc || !deviceId){
+        if(!deviceId){
             return res.json('Error, incorrect data')
         }
         const candidate = await Robot.findOne({where: {deviceId}})
         if(candidate) {
-            return res.json('Succesfully')
+            return res.json('Robot have been registered')
         }
-        const type = await Robot.create({name, desc, deviceId, userId})
+        const type = await Robot.create({deviceId, userId})
         return res.json(type)
 
     }
@@ -20,10 +19,17 @@ export class RobotController {
         res.json(types)
     }
     async getOnes(req, res) {
+        const {deviceId} = req.params
         const {userId} = req.params
-        const type = await Robot.findAll({
-            where: {userId}
-        }) 
+        if(deviceId){
+            const type = await Robot.findAll({
+                where: {deviceId}
+            })
+        } else {
+            const type = await Robot.findAll({
+                where: {userId}
+            }) 
+        }
         return res.json(type)
     }
 }
