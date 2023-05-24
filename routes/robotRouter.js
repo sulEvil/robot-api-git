@@ -4,7 +4,7 @@ import {RobotController} from "../controllers/RobotController.js"
 import {checkRoleMiddleware} from "../middleware/checkRoleMiddleware.js"
 const robotController = new RobotController()
 
-robotRouter.post('/', checkRoleMiddleware("ADMIN"), robotController.create)
+robotRouter.post('/', robotController.create)
 robotRouter.get('/', robotController.getAll)
-robotRouter.get('/id', robotController.getOnes)
+robotRouter.post('/check', robotController.getOnes)
 

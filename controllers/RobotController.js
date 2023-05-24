@@ -4,14 +4,14 @@ export class RobotController {
     async create(req, res) {
         const {name, desc, deviceId, userId} = req.body
         if(!deviceId){
-            return res.json('Error, incorrect data')
+            return res.status(400).json('Error, incorrect data')
         }
         const candidate = await Robot.findOne({where: {deviceId}})
         if(candidate) {
-            return res.json('Robot have been registered')
+            return res.status(200).json(candidate)
         }
         const type = await Robot.create({deviceId, userId})
-        return res.json(type)
+        return res.status(201).json('Robot has been created', type)
 
     }
     async getAll(req, res) {
@@ -31,6 +31,6 @@ export class RobotController {
             }) 
         }
         return res.json(type)
-    }
+    }r
 }
 
