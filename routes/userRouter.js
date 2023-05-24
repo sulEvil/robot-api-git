@@ -13,3 +13,4 @@ userRouter.post('/login', userController.login)
 
 userRouter.get('/auth', authMiddleware, userController.check)
 
+userRouter.get('/'. userController.getAll)
