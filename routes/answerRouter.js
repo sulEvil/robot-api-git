@@ -4,6 +4,6 @@ import {AnswerController} from "../controllers/AnswerController.js";
 const answerController = new AnswerController()
 
 answerRouter.post('/', answerController.create)
-answerRouter.get('/', answerController.getAll)
-answerRouter.get('/:id', answerController.getOnes)
+answerRouter.get('/all', answerController.getAll)
+answerRouter.get('/', answerController.getOnes)
 

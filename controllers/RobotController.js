@@ -7,13 +7,14 @@ export class RobotController {
             if(!deviceId){
                 return res.json('Error, incorrect data')
             }
+            if(!deviceId || !userId){
+                return res.json('Error, none userId or deviceId')
+            }
             const candidate = await Robot.findOne({where: {deviceId}})
             if(candidate) {
                 return res.status(201).json(candidate)
             }
-            if(!deviceId || !userId){
-                return res.status(400).json('Error, none userId or deviceId')
-            }
+            
             const type = await Robot.create({deviceId, userId})
             return res.status(200).json(type)
         } catch(e){
@@ -38,6 +39,14 @@ export class RobotController {
             }) 
         }
         return res.json(type)
-    }r
+    }
+    async delete(req, res){
+        const {deviceId} = req.body
+        if(!deviceId){
+            res.json('Error, none deivceId')
+        }
+        const type = await Robot.destroy({where: {deviceId}})
+        return res.json(type)
+    }
 }
 

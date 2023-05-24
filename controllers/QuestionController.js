@@ -12,7 +12,10 @@ export class QuestionController {
         return res.json(types)
     }
     async getOnes(req, res) {
-        const {robotId} = req.params
+        const {robotId} = req.query
+        if(!robotId){
+            return res.json("none robotId")
+        }
         const type = await Question.findAll({
             where: {robotId}
         }) 

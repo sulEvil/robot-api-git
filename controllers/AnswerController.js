@@ -2,8 +2,15 @@ import { Answer } from "../models/model.js"
 
 export class AnswerController {
     async create(req, res) {
+
         const {text} = req.body
         const {questionId} = req.body
+        if(!text){
+            return res.json('None text')
+         }
+         if(!questionId){
+             return res.json('None questionId')
+         }
         const type = Answer.create({text, questionId})
         return res.json('succesfully')
     }
@@ -22,11 +29,14 @@ export class AnswerController {
     }
     async getOnes(req, res) {
         let limit = 4
-        const {questionId} = req.params
+        const {questionId} = req.query
+        if(!questionId){
+            return res.json('None questionId')
+        }
          const type = await Answer.findAll({
              where: {questionId}
          , limit}) 
-         return res.json(type)
+         return res.json(type) 
     }
 }
 

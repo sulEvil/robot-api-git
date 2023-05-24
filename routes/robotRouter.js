@@ -5,6 +5,6 @@ import {checkRoleMiddleware} from "../middleware/checkRoleMiddleware.js"
 const robotController = new RobotController()
 
 robotRouter.post('/', robotController.create)
-robotRouter.get('/', robotController.getAll)
-robotRouter.post('/check', robotController.getOnes)
-
+robotRouter.get('/all', robotController.getAll)
+robotRouter.get('/', robotController.getOnes)
+robotRouter.post('/delete', robotController.delete)
