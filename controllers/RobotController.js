@@ -8,11 +8,10 @@ export class RobotController {
         }
         const candidate = await Robot.findOne({where: {deviceId}})
         if(candidate) {
-            return res.json(candidate)
+            return res.status(201).json(candidate)
         }
         const type = await Robot.create({deviceId, userId})
-        res.send('Robot have been created')
-        return res.json(type)
+        return res.status(200).json(type)
     }
     async getAll(req, res) {
         const types = await Robot.findAll()
