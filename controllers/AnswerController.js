@@ -14,19 +14,19 @@ export class AnswerController {
         return res.json('succesfully')
     }
     async getAll(req, res) {
-        let types = Answer.findAll()
-        // const {robotId, page, limit} = req.query
-        // if(!robotId){
-        //     return res.json('none robotID')
-        // }
-        // page = page || 1
-        // limit = limit || 10
-        // let offset = page * limit - limit
-        // if(robotId){
-        //     types = await Answer.findAndCountAll({where: {robotId}, limit, offset})
-        // } else {
-        //     types = await Answer.findAndCountAll({limit, offset})
-        // }
+        let types
+        const {robotId, page, limit} = req.query
+        if(!robotId){
+            return res.json('none robotID')
+        }
+        page = page || 1
+        limit = limit || 10
+        let offset = page * limit - limit
+        if(robotId){
+            types = await Answer.findAndCountAll({where: {robotId}, limit, offset})
+        } else {
+            types = await Answer.findAndCountAll({limit, offset})
+        }
         return res.json(types)
     }
     async getOnes(req, res) {
