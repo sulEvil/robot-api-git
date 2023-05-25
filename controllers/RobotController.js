@@ -16,7 +16,7 @@ export class RobotController {
             }
             
             const type = await Robot.create({deviceId, userId})
-            return res.status(200).json(type)
+            return res.json(type)
         } catch(e){
             return res.status(404).json('Непредвиденная ошибка')
         }
