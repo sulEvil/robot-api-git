@@ -13,7 +13,7 @@ const generateJwt = (id, number, role) => {
 
 export class UserController {
     async registration(req, res, next) {
-        const {number, password, role} = req.body 
+        const {number, password, role, name} = req.body 
         if(!number || !password){
             return res.json('Error in registration, number or password')
         }
@@ -22,8 +22,8 @@ export class UserController {
             return res.json('Error, have been registered')
         }
         const hashPassword = await bcrypt.hash(password, 3)
-        const user = await User.create({number, role, password: hashPassword})
-        const token = generateJwt(user.id, user.number, user.role)
+        const user = await User.create({name, number, role, password: hashPassword})
+        const token = generateJwt(user.id, user.number, user.role, user.name)
         return res.json(token)
     }
     async login(req, res) {
@@ -36,7 +36,7 @@ export class UserController {
         if(!comparePassword){
             return res.status(404).json({message:"Uncorrent data for logIn"})
         }
-        const token = generateJwt(user.id, user.number, user.role)
+        const token = generateJwt(user.id, user.number, user.role, user.name)
         return res.json(token)
     }
     async check(req, res, next) {

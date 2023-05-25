@@ -4,7 +4,7 @@ export class QuestionController {
     async create(req, res) {
         const {text} = req.body
         const {robotId} = req.body
-        if(!text || robotId){
+        if(!text || !robotId){
             return res.json('None text or robotId')
         }
         const type = await Question.create({text, robotId})
