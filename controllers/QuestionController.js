@@ -4,6 +4,9 @@ export class QuestionController {
     async create(req, res) {
         const {text} = req.body
         const {robotId} = req.body
+        if(!text || robotId){
+            return res.json('None text or robotId')
+        }
         const type = await Question.create({text, robotId})
         return res.json(type)
     }
@@ -22,7 +25,10 @@ export class QuestionController {
         return res.json(type)
     }
     async getOne(req, res) {
-        const {id} = req.params
+        const {id} = req.query
+        if(!id){
+            res.json('none Id')
+        }
         const type = await Question.findOne({
             where: {id}
         })

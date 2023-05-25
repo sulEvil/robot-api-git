@@ -8,19 +8,20 @@ export const User = db.define('user', {
     role: {type: DataTypes.STRING, defaultValue: "USER"},
     name: {type: DataTypes.STRING},
 
-}) 
+})
 export const Robot = db.define('robot', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING},
+    name: {type: DataTypes.STRING, defaultValue: " "},
     desc: {type: DataTypes.STRING},
-    deviceId: {type: DataTypes.STRING},
+    deviceId: {type: DataTypes.STRING, unique: true},
     logo: {type: DataTypes.STRING},
     color: {type: DataTypes.STRING}
 })
 export const Review = db.define('review', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     question: {type: DataTypes.STRING},
-    answer: {type: DataTypes.STRING}
+    answer: {type: DataTypes.STRING},
+    robotName: {type: DataTypes.STRING}
 })
 export const Question = db.define('question', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},

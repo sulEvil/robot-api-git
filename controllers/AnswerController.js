@@ -2,7 +2,6 @@ import { Answer } from "../models/model.js"
 
 export class AnswerController {
     async create(req, res) {
-
         const {text} = req.body
         const {questionId} = req.body
         if(!text){
@@ -17,6 +16,9 @@ export class AnswerController {
     async getAll(req, res) {
         let types
         const {robotId, page, limit} = req.query
+        if(!robotId){
+            return res.json('none robotId')
+        }
         page = page || 1
         limit = limit || 10
         let offset = page * limit - limit
