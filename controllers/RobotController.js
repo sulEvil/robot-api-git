@@ -28,13 +28,17 @@ export class RobotController {
     }
     async getOnes(req, res) {
         const {deviceId} = req.params
-        const {userId} = req.params
+        const {userId} = req.query
+        let type
         if(deviceId){
-            const type = await Robot.findAll({
+            type = await Robot.findAll({
                 where: {deviceId}
             })
         } else {
-            const type = await Robot.findAll({
+            if(!userId){
+                return res.json(req.query)
+            }
+            type = await Robot.findAll({
                 where: {userId}
             }) 
         }

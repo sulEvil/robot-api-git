@@ -22,7 +22,7 @@ export class UserController {
             return res.json('Error, have been registered')
         }
         const hashPassword = await bcrypt.hash(password, 3)
-        const user = await User.create({name, number, role, password: hashPassword})
+        const user = await User.create({number, role, password: hashPassword, name: "default"})
         const token = generateJwt(user.id, user.number, user.role, user.name)
         return res.json(token)
     }
@@ -40,8 +40,8 @@ export class UserController {
         return res.json(token)
     }
     async check(req, res, next) {
-        const token = generateJwt(req.user.id, req.user.number, req.user.role)
-        return res.json({token})
+        const token = generateJwt(req.user.id, req.user.number, req.user.role, req.user.name)
+        return res.json(token)
     }
     async getAll(req, res){
         const types = await User.findAll()
