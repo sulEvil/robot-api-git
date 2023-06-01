@@ -34,13 +34,19 @@ export class RobotController {
             type = await Robot.findAll({
                 where: {deviceId}
             })
-        } else {
+        } else if(userId) {
             if(!userId){
                 return res.json(req.query)
             }
             type = await Robot.findAll({
                 where: {userId}
             }) 
+        } else {
+            if(!id){
+                type = await Robot.findAll({
+                    where: {id}
+                })  
+            }
         }
         return res.json(type)
     }
