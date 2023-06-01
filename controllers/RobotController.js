@@ -45,11 +45,11 @@ export class RobotController {
         return res.json(type)
     }
     async delete(req, res){
-        const {deviceId} = req.body
-        if(!deviceId){
-            res.json('Error, none deivceId')
+        const {id} = req.body
+        if(!id){
+            res.json('Error, none id')
         }
-        const type = await Robot.destroy({where: {deviceId}})
+        const type = await Robot.destroy({where: {id}})
         return res.json(type)
     }
 }
