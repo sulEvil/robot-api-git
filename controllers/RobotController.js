@@ -69,7 +69,9 @@ export class RobotController {
         if(!name){
             res.json('Error, none name')
         }
-        const type = await Robot.destroy({where: {id}})
+        const type = await Robot.update({name: name}, {
+            where: {id}
+        })
         return res.json(type)
     }
 }
