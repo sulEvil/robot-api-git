@@ -29,6 +29,7 @@ export class RobotController {
     async getOnes(req, res) {
         const {deviceId} = req.params
         const {userId} = req.query
+        const {id} = req.query
         let type
         if(deviceId){
             type = await Robot.findAll({
