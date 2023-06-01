@@ -27,11 +27,13 @@ export const Review = db.define('review', {
 export const Question = db.define('question', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     text: {type: DataTypes.STRING},
+    type: {type: DataTypes.STRING}
 })
 export const Answer = db.define('answer', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     text: {type: DataTypes.STRING},
 })
+
 
 User.hasMany(Robot)
 Robot.belongsTo(User)
@@ -47,4 +49,3 @@ Question.belongsTo(Robot)
 
 Question.hasMany(Answer)
 Answer.belongsTo(Question)
-

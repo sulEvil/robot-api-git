@@ -5,11 +5,15 @@ export class QuestionController {
     async create(req, res) {
         const {text} = req.body
         const {robotId} = req.body
+        const {type} = req.body
         if(!text || !robotId){
             return res.json('None text or robotId')
+        } 
+        if(!type){
+            return res.json('None type of question')
         }
-        const type = await Question.create({text, robotId})
-        return res.json(type)
+        const item = await Question.create({text, robotId, type})
+        return res.json(item)
     }
     async getAll(req, res) {
         const types = await Question.findAndCountAll()
