@@ -10,12 +10,15 @@ export class RobotController {
             if(!deviceId || !userId){
                 return res.json('Error, none userId or deviceId')
             }
+            if(!name){
+                return res.json('Error, none name')
+            }
             const candidate = await Robot.findOne({where: {deviceId}})
             if(candidate) {
                 return res.status(201).json(candidate)
             }
             
-            const type = await Robot.create({deviceId, userId})
+            const type = await Robot.create({deviceId, userId, name})
             return res.json(type)
         } catch(e){
             return res.status(404).json('Непредвиденная ошибка')
