@@ -38,6 +38,9 @@ Robot.belongsTo(User)
 Robot.hasMany(Review)
 Review.belongsTo(Robot)
 
+User.hasMany(Review)
+Review.belongsTo(User)
+
 Robot.hasMany(Question)
 Question.belongsTo(Robot)
 
