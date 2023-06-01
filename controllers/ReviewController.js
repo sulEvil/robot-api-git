@@ -26,12 +26,12 @@ export class ReviewController {
         res.json(types)
     }
     async getOnes(req, res){
-        const {robotId} = req.query
-        if(!robotId){
-            return res.json("none robotId")
+        const {userId} = req.query
+        if(!userId){
+            return res.json("none userId")
         }
         const type = await Review.findAll({
-            where: {robotId}
+            where: {userId}
         }) 
         return res.json(type)
     }
