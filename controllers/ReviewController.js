@@ -18,7 +18,7 @@ export class ReviewController {
         if(!userId){
             res.json('None userId')
         }
-        const type = await Review.create({question, answer, robotName, robotId})
+        const type = await Review.create({question, answer, robotName, robotId, userId})
         return res.json(type)
     }
     async getAll(req, res) {
