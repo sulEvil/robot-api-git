@@ -61,5 +61,16 @@ export class RobotController {
         const type = await Robot.destroy({where: {id}})
         return res.json(type)
     }
+    async edit(req, res){
+        const {id, name} = req.body
+        if(!id){
+            res.json('Error, none id')
+        }
+        if(!name){
+            res.json('Error, none name')
+        }
+        const type = await Robot.destroy({where: {id}})
+        return res.json(type)
+    }
 }
 
