@@ -11,7 +11,7 @@ export const User = db.define('user', {
 })
 export const Robot = db.define('robot', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING, defaultValue: " "},
+    name: {type: DataTypes.STRING},
     desc: {type: DataTypes.STRING},
     deviceId: {type: DataTypes.STRING, unique: true},
     logo: {type: DataTypes.STRING},
