@@ -1,4 +1,5 @@
-import {Question} from "../models/model.js";
+import {Question, Answer} from "../models/model.js";
+
 
 export class QuestionController {
     async create(req, res) {
@@ -42,6 +43,12 @@ export class QuestionController {
         const type = await Question.destroy({
             where: {id}
         })
+        await Answer.destroy({
+            where: {questionId: id}
+        }).catch(e => {
+            return res.json('Ошибка при удалении ответов')
+        })
+
         return res.json(type)
     }
 }
