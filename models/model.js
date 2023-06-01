@@ -21,7 +21,8 @@ export const Review = db.define('review', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     question: {type: DataTypes.STRING},
     answer: {type: DataTypes.STRING},
-    robotName: {type: DataTypes.STRING}
+    robotName: {type: DataTypes.STRING},
+    userId: {type: DataTypes.INTEGER}
 })
 export const Question = db.define('question', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
