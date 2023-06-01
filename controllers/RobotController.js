@@ -42,10 +42,12 @@ export class RobotController {
                 where: {userId}
             }) 
         } else {
-            if(!id){
+            if(id){
                 type = await Robot.findAll({
                     where: {id}
                 })  
+            } else {
+                return res.json('None data')
             }
         }
         return res.json(type)
