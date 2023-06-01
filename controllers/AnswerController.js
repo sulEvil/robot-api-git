@@ -40,5 +40,15 @@ export class AnswerController {
          , limit}) 
          return res.json(type) 
     }
+    async deleteOne(req, res){
+        const {id} = req.body
+        if(!id) {
+            return res.json('None id of answer')
+        }
+        const type = await Answer.destroy({
+            where: {id}
+        })
+        return res.json(type)
+    }
 }
 

@@ -34,6 +34,16 @@ export class QuestionController {
         })
         return res.json(type)
     }
+    async deleteOne(req, res){
+        const {id} = req.body
+        if(!id) {
+            return res.json('None id of question')
+        }
+        const type = await Question.destroy({
+            where: {id}
+        })
+        return res.json(type)
+    }
 }
 
 

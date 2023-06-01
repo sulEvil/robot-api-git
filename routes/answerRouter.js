@@ -6,4 +6,4 @@ const answerController = new AnswerController()
 answerRouter.post('/', answerController.create)
 answerRouter.get('/all', answerController.getAll)
 answerRouter.get('/', answerController.getOnes)
-
+answerRouter.post('/delete', answerController.deleteOne)
