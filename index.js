@@ -12,8 +12,10 @@ const app = express()
 
 
 app.use(cors({
-    origin: 'http://ufarobotics-test.ru/'
-}))
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200
+  }))
 app.use(express.json())
 app.use('/api', router)
 
