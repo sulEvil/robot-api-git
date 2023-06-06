@@ -12,7 +12,7 @@ const app = express()
 
 
 app.use(cors({
-    origin: 'https://ufarobotics-test.ru/'
+    origin: 'http://ufarobotics-test.ru/'
 }))
 app.use(express.json())
 app.use('/api', router)
