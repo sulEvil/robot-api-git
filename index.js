@@ -11,7 +11,9 @@ const PORT = process.env.SERVER_PORT || 8080
 const app = express()
 
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://ufarobotics-test.ru/'
+}))
 app.use(express.json())
 app.use('/api', router)
 
