@@ -32,6 +32,7 @@ export const Question = db.define('question', {
 export const Answer = db.define('answer', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     text: {type: DataTypes.STRING},
+    type: {type: DataTypes.STRING}
 })
 
 
